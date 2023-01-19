@@ -9,17 +9,27 @@ class Location extends StatefulWidget {
 
 class _LocationState extends State<Location> {
 
-  int counter = 0;
+  void getData() async {
+    // simulate network
+    String name = await Future.delayed(Duration(seconds: 3), () {
+       return "Denzel";
+    });
+
+    String bio = await Future.delayed(Duration(seconds: 2), (){
+      return 'Development x Designing';
+    });
+
+    print('$name - $bio');
+  }
 
   @override
   void initState() {
     super.initState();
-    print('Init state here we go');
+    getData();
   }
 
   @override
   Widget build(BuildContext context) {
-    print('Build state here we go');
     return Scaffold(
       appBar: AppBar(
         title: Text('Choose Loaction'),
@@ -27,13 +37,6 @@ class _LocationState extends State<Location> {
         centerTitle: true,
         elevation: 0,
       ),
-      body: TextButton.icon(onPressed: (){
-        setState(() {
-          counter++;
-        });
-      }, icon: Icon(Icons.tiktok), label: Text('Counter is $counter'))
-
-
     );
   }
 }
