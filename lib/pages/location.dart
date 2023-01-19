@@ -8,16 +8,32 @@ class Location extends StatefulWidget {
 }
 
 class _LocationState extends State<Location> {
+
+  int counter = 0;
+
+  @override
+  void initState() {
+    super.initState();
+    print('Init state here we go');
+  }
+
   @override
   Widget build(BuildContext context) {
+    print('Build state here we go');
     return Scaffold(
       appBar: AppBar(
         title: Text('Choose Loaction'),
-        backgroundColor: Colors.greenAccent,
+        backgroundColor: Colors.green[600],
         centerTitle: true,
         elevation: 0,
       ),
-      body: Text('Location'),
+      body: TextButton.icon(onPressed: (){
+        setState(() {
+          counter++;
+        });
+      }, icon: Icon(Icons.tiktok), label: Text('Counter is $counter'))
+
+
     );
   }
 }
