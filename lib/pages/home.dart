@@ -11,7 +11,13 @@ class _HomeState extends State<Home> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: SafeArea(child: Text('This is the home')),
+      body: SafeArea(child: Column(
+        children: [
+          TextButton.icon(onPressed: (){
+            Navigator.pushNamed(context, '/location');
+          }, label: Text('Choose Location'), icon: Icon(Icons.location_city),)
+        ],
+      )),
     );
   }
 }
