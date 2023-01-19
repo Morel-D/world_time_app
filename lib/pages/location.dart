@@ -9,25 +9,6 @@ class Location extends StatefulWidget {
 
 class _LocationState extends State<Location> {
 
-  void getData() async {
-    // simulate network
-    String name = await Future.delayed(Duration(seconds: 3), () {
-       return "Denzel";
-    });
-
-    String bio = await Future.delayed(Duration(seconds: 2), (){
-      return 'Development x Designing';
-    });
-
-    print('$name - $bio');
-  }
-
-  @override
-  void initState() {
-    super.initState();
-    getData();
-  }
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
