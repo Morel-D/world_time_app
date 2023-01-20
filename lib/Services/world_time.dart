@@ -13,25 +13,31 @@ class worldTime {
 
   Future<void> getData() async {
 
-    Uri url = Uri.parse('http://worldtimeapi.org/api/timezone/$path');
+    try {
+      Uri url = Uri.parse('http://worldtimeapi.org/api/timezone/$path');
 
-    Response response = await get(url);
-    Map data = jsonDecode(response.body);
-    //print(data);
+      Response response = await get(url);
+      Map data = jsonDecode(response.body);
+      //print(data);
 
-    // Setting time
-    String dataTime = data['datetime'];
-    String offset = data['utc_offset'].substring(1,3);
-    //print(dataTime);
-    //print(offset);
+      // Setting time
+      String dataTime = data['datetime'];
+      String offset = data['utc_offset'].substring(1,3);
+      //print(dataTime);
+      //print(offset);
 
-    // creating dateTime object
-    DateTime now = DateTime.parse(dataTime);
-    now = now.add(Duration(hours: int.parse(offset)));
+      // creating dateTime object
+      DateTime now = DateTime.parse(dataTime);
+      now = now.add(Duration(hours: int.parse(offset)));
 
-    // set Time property
+      // set Time property
 
-    time = now.toString();
+      time = now.toString();
+    }catch(e)
+    {
+      time = "Could not fetch the data";
+      print("Could not fetch the data $e");
+    }
 
 
   }
