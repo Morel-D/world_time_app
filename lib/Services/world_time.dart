@@ -1,5 +1,6 @@
 import 'package:http/http.dart';
 import 'dart:convert';
+import 'package:intl/intl.dart';
 
 
 class worldTime {
@@ -32,7 +33,8 @@ class worldTime {
 
       // set Time property
 
-      time = now.toString();
+      time = DateFormat.jm().format(now);
+      // now.toString();
     }catch(e)
     {
       time = "Could not fetch the data";
