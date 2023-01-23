@@ -9,6 +9,7 @@ class worldTime {
   late String time; // time
   String path;
   String flag;
+  late bool isDayTime;
 
   worldTime({required this.location, required this.path, required this.flag });
 
@@ -32,13 +33,13 @@ class worldTime {
       now = now.add(Duration(hours: int.parse(offset)));
 
       // set Time property
-
+      isDayTime = now.hour > 6 && now.hour < 20 ? true : false;
       time = DateFormat.jm().format(now);
       // now.toString();
     }catch(e)
     {
       time = "Could not fetch the data";
-      print("Could not fetch the data $e");
+      print('no $e');
     }
 
 
